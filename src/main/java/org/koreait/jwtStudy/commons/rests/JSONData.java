@@ -14,7 +14,7 @@ public class JSONData<T> {
     private boolean success = true;
     private HttpStatus status = HttpStatus.OK;
     @NonNull
-    private T data;
-    private String message;
+    private Object data;
+    private Object message;
 
 }
