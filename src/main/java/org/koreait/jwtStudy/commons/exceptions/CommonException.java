@@ -11,6 +11,7 @@ public class CommonException extends RuntimeException{
     public CommonException(Map<String, List<String>> messages, HttpStatus status){
         super();
         this.status = status;
+        this.messages = messages;
     }
 
     public CommonException(String message,HttpStatus status){

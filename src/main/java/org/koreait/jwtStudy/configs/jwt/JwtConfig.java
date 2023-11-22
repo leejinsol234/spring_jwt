@@ -10,7 +10,7 @@ public class JwtConfig {
 
     @Bean
     public TokenProvider tokenProvider(JwtProperties jwtProperties){
-        System.out.println("jwtProperties: "+jwtProperties);
+        System.out.println("jwtProperties: "+ jwtProperties);
         return new TokenProvider(jwtProperties.getSecret(), jwtProperties.getAccessTokenValidityInSeconds());
     }
 }

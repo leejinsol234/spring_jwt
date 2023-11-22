@@ -45,7 +45,7 @@ public class TokenProvider {
         return Jwts.builder()
                 .setSubject(authentication.getName()) //아이디,email(토큰에 포함됨)
                 .claim("auth",authories)//권한 정보(토큰에 포함됨)
-                .signWith(key, SignatureAlgorithm.ES512) //HMAC + SHA512.
+                .signWith(key, SignatureAlgorithm.HS512) //HMAC + SHA512.
                 .setExpiration(expires)//토큰 유효시간
                 .compact(); //문자열로 위의 정보들을 만들어줌
     }
@@ -76,12 +76,12 @@ public class TokenProvider {
                     .build()
                     .parseClaimsJws(token)
                     .getPayload();
-        } catch (SecurityException | MalformedJwtException | IllegalArgumentException e) {
-            throw new BadRequestException(Utils.getMessage("INVALID_FORMAT.JWT.TOKEN", "validation"));
-        } catch (ExpiredJwtException e) { //토큰 만료 시 예외처리
+        } catch (ExpiredJwtException e) {
             throw new BadRequestException(Utils.getMessage("EXPIRED.JWT_TOKEN", "validation"));
         } catch (UnsupportedJwtException e) {
             throw new BadRequestException(Utils.getMessage("UNSUPPORTED.JWT_TOKEN", "validation"));
+        } catch (SecurityException | MalformedJwtException | IllegalArgumentException e) {
+            throw new BadRequestException(Utils.getMessage("INVALID_FORMAT.JWT_TOKEN", "validation"));
         }
     }
 }

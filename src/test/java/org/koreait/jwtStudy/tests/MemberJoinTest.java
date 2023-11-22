@@ -12,7 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 @SpringBootTest
@@ -27,8 +26,8 @@ public class MemberJoinTest {
     void joinTest() throws Exception {
         RequestJoin form = RequestJoin.builder()
                 .email("user01@test.org")
-                .password("123456")
-                .confirmPassword("123456")
+                .password("_aA123456")
+                .confirmPassword("_aA123456")
                 .name("사용자01")
                 .mobile("010-1111-2222")
                 .agree(true)
@@ -42,7 +41,7 @@ public class MemberJoinTest {
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(params)
                 .characterEncoding("UTF-8")
-                        .with(csrf().asHeader())
+                        //.with(csrf().asHeader())
         ).andDo(print());
     }
 }
