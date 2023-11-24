@@ -29,7 +29,7 @@ public class MemberSaveService {
         Member member = Member.builder()
                 .email(form.email())
                 .name(form.name())
-                .password(form.password())
+                .password(hash)
                 .mobile(form.mobile())
                 .type(MemberType.USER)
                 .build();
