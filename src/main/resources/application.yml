@@ -5,9 +5,9 @@ spring:
   # 데이터 베이스 연결 설정
   datasource:
     driverClassName: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@localhost:1521:orcl
-    username: jwtProject
-    password: _aA123456
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: BOARD_TEST
+    password: 123456
 
   # JPA 설정
   jpa:
